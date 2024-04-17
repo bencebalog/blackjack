@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -11,22 +10,44 @@
    <children>
       <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="1006.0" VBox.vgrow="ALWAYS">
          <children>
-            <Arc fill="#039030" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
+            <Arc fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
             <Button layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="532.0" layoutY="314.0" mnemonicParsing="false" onAction="#onStandClick" prefWidth="70.0" text="STAND">
+            <Button layoutX="492.0" layoutY="314.0" mnemonicParsing="false" onAction="#onStandClick" prefWidth="70.0" text="STAND">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <ImageView fx:id="jatekos2" fitHeight="100.0" fitWidth="100.0" layoutX="517.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="jatekos1" fitHeight="100.0" fitWidth="100.0" layoutX="392.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="dealer1" fitHeight="100.0" fitWidth="100.0" layoutX="392.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="dealer" fitHeight="100.0" fitWidth="100.0" layoutX="517.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+            <Circle fill="#bec6cd" layoutX="150.0" layoutY="286.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#bec6cd" layoutX="218.0" layoutY="352.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#bec6cd" layoutX="773.0" layoutY="352.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#bec6cd" layoutX="848.0" layoutY="286.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <HBox fx:id="j" alignment="CENTER" layoutX="407.0" layoutY="362.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </padding></HBox>
+            <HBox fx:id="d" alignment="CENTER" layoutX="401.0" layoutY="23.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </padding>
+            </HBox>
          </children>
       </Pane>
+      <HBox alignment="TOP_RIGHT" prefWidth="200.0">
+         <children>
+            <TextField fx:id="txF">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#onJoinClick" prefHeight="25.0" prefWidth="55.0" text="Join" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
