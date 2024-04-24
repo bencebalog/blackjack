@@ -15,9 +15,13 @@ public class HelloController {
     @FXML private TextField txDepo;
     @FXML private HBox d;
     @FXML private HBox j;
+    @FXML private Label lbBalance;
+    @FXML private Label lbBet;
 
 
     DatagramSocket socket = null;
+
+
 
     public void initialize(){
         try {
@@ -33,6 +37,7 @@ public class HelloController {
         });
         t.setDaemon(true);
         t.start();
+
     }
 
     @FXML private void onJoinClick(){
@@ -72,11 +77,41 @@ public class HelloController {
     }
 
     @FXML private void onHitClick(){
-
+        String uzenet = "hit";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
     }
 
     @FXML private void onStandClick(){
+        String uzenet = "stand";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
+    }
+    @FXML private void onExitClick(){
+        String uzenet = "exit";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
+    }
 
+    @FXML private void onBet100(){
+        String uzenet = "bet:100";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
+    }
+    @FXML private void onBet50(){
+        String uzenet = "bet:50";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
+    }
+    @FXML private void onBet25(){
+        String uzenet = "bet:25";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
+    }
+    @FXML private void onBet5(){
+        String uzenet = "bet:5";
+        String ip = txF.getText();
+        kuld(uzenet, ip, 678);
     }
 
 
