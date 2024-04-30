@@ -7,17 +7,17 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
    <children>
       <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="1006.0" VBox.vgrow="ALWAYS">
          <children>
-            <Arc fx:id="btStand" fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
+            <Arc fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
             <Button fx:id="btHit" layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="492.0" layoutY="314.0" mnemonicParsing="false" onAction="#onStandClick" prefWidth="70.0" text="STAND">
+            <Button fx:id="btStand" layoutX="492.0" layoutY="314.0" mnemonicParsing="false" onAction="#onStandClick" prefWidth="70.0" text="STAND">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -40,16 +40,11 @@
                   <Pane fx:id="pnD" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Label fx:id="jatek" layoutX="965.0" layoutY="469.0" prefWidth="50.0">
-               <padding>
-                  <Insets right="30.0" />
-               </padding>
-            </Label>
          </children>
       </Pane>
-      <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="986.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label>
+            <Label onMouseClicked="#onBet100">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet100" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +56,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <Label>
+            <Label onMouseClicked="#onBet50">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet50" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,7 +68,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <Label>
+            <Label onMouseClicked="#onBet25">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet25" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -97,9 +92,9 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <VBox prefHeight="77.0" prefWidth="186.0">
+            <VBox prefHeight="67.0" prefWidth="326.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <HBox prefHeight="40.0" prefWidth="264.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Balance: ">
                            <font>
@@ -116,14 +111,14 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Bet:">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbBet" alignment="CENTER" contentDisplay="CENTER" HBox.hgrow="ALWAYS">
+                        <Label fx:id="lbBet" alignment="CENTER" contentDisplay="CENTER" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets left="15.0" right="15.0" top="2.0" />
                            </HBox.margin>
@@ -145,33 +140,50 @@
                   </HBox>
                </children>
                <HBox.margin>
-                  <Insets left="5.0" top="10.0" />
+                  <Insets left="5.0" right="10.0" top="10.0" />
                </HBox.margin>
                <padding>
                   <Insets left="10.0" />
                </padding>
             </VBox>
-            <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-            <TextField fx:id="txF">
-               <HBox.margin>
-                  <Insets right="15.0" />
-               </HBox.margin>
-            </TextField>
-            <Button mnemonicParsing="false" onAction="#onJoinClick" prefHeight="25.0" prefWidth="55.0" text="Join">
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin></Button>
-            <Label text="Deposit">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="txDepo" layoutX="720.0" layoutY="10.0" maxWidth="80.0" />
-            <Button mnemonicParsing="false" onAction="#onExitClick" prefWidth="50.0" text="Exit">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </Button>
+            <VBox prefHeight="77.0" prefWidth="289.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txF">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#onJoinClick" prefHeight="25.0" prefWidth="55.0" text="Join">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="259.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Deposit">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txDepo" maxWidth="80.0" />
+                        <Button mnemonicParsing="false" onAction="#onExitClick" prefWidth="50.0" text="Exit">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></HBox>
+               </children>
+            </VBox>
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="20.0" />

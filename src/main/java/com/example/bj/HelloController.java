@@ -2,6 +2,7 @@ package com.example.bj;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.IndexedCell;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,8 +22,8 @@ public class HelloController {
     @FXML private TextField txDepo;
     @FXML private Label lbBalance;
     @FXML private Label lbBet;
-    @FXML private Label btHit;
-    @FXML private Label btStand;
+    @FXML private Button btHit;
+    @FXML private Button btStand;
     @FXML private Label jatek;
     @FXML private Pane pnD;
     @FXML private Pane pnJ;
@@ -39,7 +40,8 @@ public class HelloController {
 
         Thread reciveThread = null;
         DatagramSocket socket = null;
-
+        double ujX = 100;
+        double ujY = 100;
 
 
 
@@ -103,30 +105,49 @@ public class HelloController {
         System.out.printf(uzenet + "\n");
         String[] u = uzenet.split(":");
         uk = u[0];
+        kc = u[0];
         friss = true;
         if (u[0].equals("joined")) {
             m = Integer.parseInt(u[1]);
+            lbBalance.setText(m + "");
         }
         if (u[0].equals("start")) {
             kartyak.clear();
             kc = "";
-            pnD.getChildren().add(new ImageView(new Image(getClass().getResourceAsStream("gray_black.png"))));
+            uk="";
+            bet=0;
+            pnD.getChildren().add(new ImageView(new Image(getClass().getResourceAsStream("gray_back.png"))));
             pnJ.getChildren().clear();
-            jatek.setText("Ennyi pujáró játszik: " + u[1]);
+            pnD.getChildren().clear();
+            lbBalance.setText(m+"");
+            lbBet.setText("");
+        }
+        if (u[0].equals("s")) {
+            uk = u[1];
+            ImageView uj = new ImageView(new Image(getClass().getResourceAsStream(uk + ".png")));
+            uj.setTranslateX(ujX);
+            uj.setTranslateY(ujY);
+            ujX=uj.getTranslateX()+70;
+            ujX=uj.getTranslateY()+30;
+            pnD.getChildren().add(uj);
+        }
+        if (u[0].equals("k")) {
+            kartyak.add(u[1]);
+            kc = u[1];
+            ImageView uj = new ImageView(new Image(getClass().getResourceAsStream(kc + ".png")));
+            uj.setTranslateX(ujX);
+            uj.setTranslateY(ujY);
+            ujX=uj.getTranslateX()+70;
+            ujX=uj.getTranslateY()+30;
+            pnJ.getChildren().add(uj);
         }
         if (u[0].equals("paid")) {
             m = Integer.parseInt(u[1]);
             lbBalance.setText(m + "");
         }
-        if (u[0].equals("s")) {
-            uk = u[1];
-            pnD.getChildren().add(new ImageView(new Image(getClass().getResourceAsStream(uk + ".png"))));
-        }
-        if (u[0].equals("k")) {
-            kartyak.add(u[1]);
-            kc = u[1];
-            pnJ.getChildren().add(new ImageView(new Image(getClass().getResourceAsStream(kc + ".png"))));
-
+        if (u[0].equals("balance")){
+            m=Integer.parseInt(u[1]);
+            lbBalance.setText(m+"");
         }
     }
 
@@ -148,18 +169,28 @@ public class HelloController {
 
         @FXML private void onBet100 () {
             bet+=100;
+            lbBet.setText(bet+"");
+            lbBalance.setText(m-bet+"");
         }
         @FXML private void onBet50 () {
             bet+=50;
+            lbBet.setText(bet+"");
+            lbBalance.setText(m-bet+"");
         }
         @FXML private void onBet25 () {
             bet+=25;
+            lbBet.setText(bet+"");
+            lbBalance.setText(m-bet+"");
         }
         @FXML private void onBet5 () {
             bet+=5;
+            lbBet.setText(bet+"");
+            lbBalance.setText(m-bet+"");
         }
         @FXML private void onAllin () {
             String ip = txF.getText();
+            lbBet.setText(m+"");
+            lbBalance.setText(m-bet+"");
             kuld("bet:" + m, ip, 678);
         }
         @FXML private void onBet(){
