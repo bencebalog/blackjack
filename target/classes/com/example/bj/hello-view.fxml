@@ -7,12 +7,12 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
    <children>
       <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="1006.0" VBox.vgrow="ALWAYS">
          <children>
-            <Arc fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
-            <Button layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
+            <Arc fx:id="btStand" fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
+            <Button fx:id="btHit" layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -28,19 +28,30 @@
             <HBox fx:id="j" alignment="CENTER" layoutX="407.0" layoutY="362.0" spacing="10.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
-               </padding></HBox>
+               </padding>
+               <children>
+                  <Pane fx:id="pnJ" HBox.hgrow="ALWAYS" />
+               </children></HBox>
             <HBox fx:id="d" alignment="CENTER" layoutX="401.0" layoutY="23.0" spacing="10.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </padding>
+               <children>
+                  <Pane fx:id="pnD" HBox.hgrow="ALWAYS" />
+               </children>
             </HBox>
+            <Label fx:id="jatek" layoutX="965.0" layoutY="469.0" prefWidth="50.0">
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Label>
          </children>
       </Pane>
       <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="986.0">
          <children>
             <Label>
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet100" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@chip100.png" />
                      </image>
@@ -52,7 +63,7 @@
             </Label>
             <Label>
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet50" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@chip50.png" />
                      </image>
@@ -64,7 +75,7 @@
             </Label>
             <Label>
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#onBet25" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@chip25.png" />
                      </image>
@@ -74,7 +85,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <Label>
+            <Label onMouseClicked="#onBet5">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -86,6 +97,60 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
+            <VBox prefHeight="77.0" prefWidth="186.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Balance: ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBalance" alignment="CENTER" contentDisplay="CENTER" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" top="2.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Bet:">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBet" alignment="CENTER" contentDisplay="CENTER" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" top="2.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#onBet" text="Bet">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onAllin" text="All in">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
             <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
             <TextField fx:id="txF">
                <HBox.margin>
@@ -94,14 +159,19 @@
             </TextField>
             <Button mnemonicParsing="false" onAction="#onJoinClick" prefHeight="25.0" prefWidth="55.0" text="Join">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="30.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" text="Deposit">
+            <Label text="Deposit">
                <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="txDepo" layoutX="720.0" layoutY="10.0" maxWidth="80.0" />
+            <Button mnemonicParsing="false" onAction="#onExitClick" prefWidth="50.0" text="Exit">
+               <HBox.margin>
+                  <Insets left="30.0" />
                </HBox.margin>
             </Button>
-            <TextField fx:id="txDepo" layoutX="720.0" layoutY="10.0" maxWidth="80.0" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="20.0" />

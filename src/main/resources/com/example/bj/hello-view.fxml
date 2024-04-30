@@ -7,12 +7,12 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bj.HelloController">
    <children>
       <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="1006.0" VBox.vgrow="ALWAYS">
          <children>
-            <Arc fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
-            <Button layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
+            <Arc fx:id="btStand" fill="#039030" layoutX="-8.0" length="180.0" radiusX="500.0" radiusY="500.0" startAngle="180.0" stroke="#6f3c02" strokeType="INSIDE" strokeWidth="5.0" translateX="500.0" type="ROUND" />
+            <Button fx:id="btHit" layoutX="407.0" layoutY="314.0" mnemonicParsing="false" onAction="#onHitClick" prefWidth="70.0" style="-fx-opacity: 1;" text="HIT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -28,12 +28,23 @@
             <HBox fx:id="j" alignment="CENTER" layoutX="407.0" layoutY="362.0" spacing="10.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
-               </padding></HBox>
+               </padding>
+               <children>
+                  <Pane fx:id="pnJ" HBox.hgrow="ALWAYS" />
+               </children></HBox>
             <HBox fx:id="d" alignment="CENTER" layoutX="401.0" layoutY="23.0" spacing="10.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </padding>
+               <children>
+                  <Pane fx:id="pnD" HBox.hgrow="ALWAYS" />
+               </children>
             </HBox>
+            <Label fx:id="jatek" layoutX="965.0" layoutY="469.0" prefWidth="50.0">
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Label>
          </children>
       </Pane>
       <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="986.0">
@@ -120,9 +131,14 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#onBetClick" text="Bet">
+                        <Button mnemonicParsing="false" onAction="#onBet" text="Bet">
                            <HBox.margin>
                               <Insets left="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onAllin" text="All in">
+                           <HBox.margin>
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
                      </children>
